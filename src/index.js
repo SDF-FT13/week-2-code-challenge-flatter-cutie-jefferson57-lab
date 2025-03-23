@@ -47,3 +47,11 @@ votesForm.addEventListener("submit", (e) => {
     }
 });
 
+resetBtn.addEventListener("click", ()=> {
+    if (currentCharacter){
+        currentCharacter.votes = 0;
+        detailedInfo.querySelector("#vote-count").textContent = 0;
+        
+    }
+});
+
