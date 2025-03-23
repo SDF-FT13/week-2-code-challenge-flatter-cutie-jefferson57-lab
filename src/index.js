@@ -30,7 +30,20 @@ function showCharacterInfo(character){
     detailedInfo.querySelector("#vote-count").textContent = character.votes;  
 }
 
-votesFormorm.addEventListener("submit", (e) => {
+votesForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    if 
-})
+    if (currentCharacter) {
+        const enteredVotes = parseInt(votesInput.value);
+        if (!isNaN(enteredVotes)){
+            currentCharacter.votes += enteredVotes;
+            detailedInfo.querySelector("#vote-count").textContent = currentCharacter.votes;
+            votesInput.value = '';
+
+        }
+        else{
+            alert("USE NUMBERS!")
+
+        }
+    }
+});
+
