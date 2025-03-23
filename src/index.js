@@ -41,7 +41,7 @@ votesForm.addEventListener("submit", (e) => {
 
         }
         else{
-            alert("USE NUMBERS!")
+            alert("USE VALID INPUT!")
 
         }
     }
