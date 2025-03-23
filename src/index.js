@@ -20,3 +20,9 @@ document.addEventListener("DOMContentLoaded", () =>){
         });
     }
 } 
+
+function showCharacterInfo(character){
+    detailedInfo.querySelector("#name").textContent = character.name;  
+    detailedInfo.querySelector("#img").src = character.image;
+    detailedInfo.querySelector("#vote-count").textContent = character.votes;  
+}
