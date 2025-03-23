@@ -51,7 +51,57 @@ resetBtn.addEventListener("click", ()=> {
     if (currentCharacter){
         currentCharacter.votes = 0;
         detailedInfo.querySelector("#vote-count").textContent = 0;
-        
+        addVotesToObject(character);
     }
 });
+
+
+function addVotesToObject(character) {
+    fetch(`http://localhost:3000/characters/${character.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ votes: character.votes }),
+    });
+  }
+
+  fetchCharacters(); 
+});
+
+
+ if (characterForm) { 
+    characterForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const newCharacter = {
+        name: nameInput.value,
+        image: imageUrlInput.value,
+        votes: 0,
+      };
+
+      fetch('http://localhost:3000/characters', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newCharacter),
+      })
+        .then(response => response.json())
+        .then(addedCharacter => {
+          
+          const characterSpan = document.createElement('span');
+          characterSpan.textContent = addedCharacter.name;
+          characterSpan.addEventListener('click', () => displayCharacterDetails(addedCharacter));
+          characterBar.appendChild(characterSpan);
+          
+          displayCharacterDetails(addedCharacter);
+          // Clear input fields
+          nameInput.value = '';
+          imageUrlInput.value = '';
+        });
+    });
+  }
+
+  
+
 
