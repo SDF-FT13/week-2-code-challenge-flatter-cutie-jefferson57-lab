@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", () =>){
     const votesForm = document.getElementById("votes-form");
     const votesInput = document.getElementById("votes");
     const resetForm = document.getElementById("reset-btn");
+    
+    let currentCharacter = null;
 
-    function fetchCHaracters(){
+        function fetchCHaracters(){
         fetch('http://localhost:3000/characters')
         .then(response => response.json())
         .then(characters => {
@@ -22,7 +24,13 @@ document.addEventListener("DOMContentLoaded", () =>){
 } 
 
 function showCharacterInfo(character){
+    currentCharacter = character
     detailedInfo.querySelector("#name").textContent = character.name;  
     detailedInfo.querySelector("#img").src = character.image;
     detailedInfo.querySelector("#vote-count").textContent = character.votes;  
 }
+
+votesFormorm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if 
+})
